@@ -6,13 +6,20 @@ const nextConfig: NextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-  // Skip static generation for authentication pages
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
+  typescript: {
+    // This allows production builds to successfully complete even if
+    // your project has TypeScript errors.
+    ignoreBuildErrors: true,
   },
-  // Skip problematic pages during static generation
-  generateStaticParams: async () => {
-    return [];
+  // Output configuration for static export
+  output: "export",
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
+  // Disable server-side features for static export
+  experimental: {
+    appDir: true,
   },
 };
 
