@@ -1,0 +1,38 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_FLAGS = "--prefix=/opt/buildhome/repo"
+
+# Skip problematic pages during build
+[[redirects]]
+  from = "/admin/*"
+  to = "/auth/login"
+  status = 302
+  conditions = {Role = ["!admin"]}
+
+[[redirects]]
+  from = "/doctor/*"
+  to = "/auth/login"
+  status = 302
+  conditions = {Role = ["!doctor"]}
+
+[[redirects]]
+  from = "/lab/*"
+  to = "/auth/login"
+  status = 302
+  conditions = {Role = ["!lab"]}
+
+[[redirects]]
+  from = "/patient/*"
+  to = "/auth/login"
+  status = 302
+  conditions = {Role = ["!patient"]}
+
+# Handle SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
