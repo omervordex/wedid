@@ -1,6 +1,5 @@
 [build]
   command = "npm run build"
-  publish = "out"
 
 [build.environment]
   NODE_VERSION = "18.20.8"
@@ -10,25 +9,21 @@
   from = "/admin/*"
   to = "/auth/login"
   status = 302
-  conditions = {Role = ["!admin"]}
 
 [[redirects]]
   from = "/doctor/*"
   to = "/auth/login"
   status = 302
-  conditions = {Role = ["!doctor"]}
 
 [[redirects]]
   from = "/lab/*"
   to = "/auth/login"
   status = 302
-  conditions = {Role = ["!lab"]}
 
 [[redirects]]
   from = "/patient/*"
   to = "/auth/login"
   status = 302
-  conditions = {Role = ["!patient"]}
 
 # Handle SPA routing
 [[redirects]]
