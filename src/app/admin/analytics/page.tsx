@@ -1,5 +1,8 @@
 "use client";
 
+// Force dynamic rendering for this page
+export const dynamic = "force-dynamic";
+
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -27,7 +30,8 @@ import {
 import Image from "next/image";
 
 export default function AdminAnalyticsPage() {
-  const { data: session } = useSession();
+  const sessionResult = useSession();
+  const session = sessionResult?.data;
   const router = useRouter();
   const [selectedPeriod, setSelectedPeriod] = useState("6months");
 
